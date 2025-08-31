@@ -13,22 +13,17 @@ let package = Package(
         ),
     ],
     dependencies: [
-        // если хочешь использовать общий Alamofire из Moya, убери эту строку
-        // .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.7.0")
+        .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.7.0")
     ],
     targets: [
         .target(
             name: "UseDeskSDKSwift",
-            path: "UseDesk_SDK_Swift",
-            exclude: [
-                "Info.plist"
+            dependencies: [
+                "Alamofire"
             ],
+            path: "Sources/UseDeskSDKSwift",
             resources: [
                 .process("Resources")
-            ],
-            dependencies: [
-                // если SDK напрямую использует Alamofire — тут нужно оставить
-                // "Alamofire"
             ]
         )
     ]
